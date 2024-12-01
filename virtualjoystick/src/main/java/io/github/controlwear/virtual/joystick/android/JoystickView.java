@@ -390,8 +390,8 @@ public class JoystickView extends View {
 
         // radius based on smallest size : height OR width
         int d = Math.min(w, h);
-        mButtonRadius = (int) (d / 2 * mButtonSizeRatio);
-        mBorderRadius = (int) (d / 2 * mBackgroundSizeRatio);
+        mButtonRadius = (int) (d / 2f * mButtonSizeRatio);
+        mBorderRadius = (int) (d / 2f * mBackgroundSizeRatio);
         mBackgroundRadius = mBorderRadius - (mPaintCircleBorder.getStrokeWidth() / 2);
 
         // Compute how far the forward distance can go
@@ -412,9 +412,9 @@ public class JoystickView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // setting the measured values to resize the view to a certain width and height
-        //int d = Math.min(measure(widthMeasureSpec), measure(heightMeasureSpec));
-        if(heightMeasureSpec < widthMeasureSpec) widthMeasureSpec = heightMeasureSpec;
-        setMeasuredDimension(measure(widthMeasureSpec), measure(heightMeasureSpec));
+        int d = Math.min(measure(widthMeasureSpec), measure(heightMeasureSpec));
+        //if(heightMeasureSpec < widthMeasureSpec) widthMeasureSpec = heightMeasureSpec;
+        setMeasuredDimension(d, d);
     }
 
 
